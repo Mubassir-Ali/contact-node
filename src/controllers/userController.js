@@ -11,7 +11,6 @@ const getUsers = (req, res) => {
 
 const getUserById = (req, res) => {
   const id = parseInt(req.params.id);
-  console.log(id);
   pool.query("SELECT * FROM users WHERE id=$1", [id], (error, result) => {
     if (error) {
       throw error;
@@ -35,7 +34,6 @@ const filterUser = (req, res) => {
 
 const createUser = (req, res) => {
   const { firstName, lastName, contacts } = req.body;
-  console.log("request body", req.body);
   pool.query(
     "INSERT INTO users (firstName, lastName, contacts) VALUES ($1,$2,$3) RETURNING *",
     [firstName, lastName, contacts],
