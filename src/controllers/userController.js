@@ -54,8 +54,8 @@ const updateUser = (req, res) => {
   const id = parseInt(req.params.id);
   const { firstName, lastName, contacts } = req.body;
   pool.query(
-    "UPDATE users SET firstName =$1, lastName=$2, contacts=$3",
-    [firstName, lastName, contacts],
+    "UPDATE users SET firstName =$1, lastName=$2, contacts=$3 WHERE id=$4",
+    [firstName, lastName, contacts,id],
     (error, result) => {
       if (error) {
         throw error;
