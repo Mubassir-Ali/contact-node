@@ -12,8 +12,11 @@ const router = express.Router();
 
 router.route("/filter/:lastName").get(filterUser);
 
-router.route("/").get(getUsers).post(createUser);
+router.route("/").get(getUsers);
+router.route("/").post(createUser);
 
-router.route("/:id").get(getUserById).put(updateUser).delete(deleteUser);
+router.route("/:id").get(getUserById);
+router.route("/:id").delete(deleteUser);
+router.route("/:id").put(updateUser);
 
 module.exports = router;

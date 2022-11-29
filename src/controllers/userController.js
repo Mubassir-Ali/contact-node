@@ -22,7 +22,7 @@ const getUserById = (req, res) => {
 const filterUser = (req, res) => {
   const lastName = req.params.lastName;
   pool.query(
-    `SELECT * FROM users WHERE lastName like '%${lastName}%'`,
+    "SELECT * FROM users WHERE lastname ILIKE ('%' || $1 || '%')",[lastName],
     (error, result) => {
       if (error) {
         throw error;
